@@ -19,14 +19,11 @@ def main():
 
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = r"C:\Users\Ayisha\AppData\Local\Programs\Python\Python313\bob\client_secret_987114519253-48p3h20ilfjq1uaqfled9abnp0vgdgis.apps.googleusercontent.com.json"
+    api_key = "AIzaSyDvQyJ4a8QYS4NPlkNUIQgMjmG54GhJRNA"
 
-    # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_local_server(port=8080)
+    # Create an API client
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
+        api_service_name, api_version, developerKey=api_key)
 
     request = youtube.playlistItems().list(
         part="snippet",
